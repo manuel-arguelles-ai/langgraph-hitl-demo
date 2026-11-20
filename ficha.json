@@ -1,0 +1,26 @@
+{
+  "titulo_es": "LangGraph HITL: aprobación humana sobre checkpoint",
+  "titulo_en": "LangGraph HITL: human approval on a checkpoint",
+  "resumen_es": "Demo de human-in-the-loop sobre un grafo multi-agente de LangGraph: el grafo pausa con interrupt() antes de ejecutar SQL y reanuda con Command(resume=...) desde el checkpoint de SQLite. Verificado de punta a punta con un LLM falso y determinista, sin claves de pago. Un control sin checkpointer confirma que sin estado persistido no se puede consultar la pausa ni reanudar.",
+  "resumen_en": "Human-in-the-loop demo on a multi-agent LangGraph graph: the graph pauses with interrupt() before running SQL and resumes with Command(resume=...) from a SQLite checkpoint. Verified end to end with a fake, deterministic LLM and no paid keys. A control run without a checkpointer confirms that without persisted state the pause cannot be inspected or resumed.",
+  "puntos_es": [
+    "Pausa en interrupt() y reanudación desde el checkpoint, incluso desde un proceso nuevo con el mismo thread_id",
+    "Generar el SQL y pedir aprobación en nodos separados evita regenerar una consulta distinta al reanudar",
+    "Control sin checkpointer: get_state y Command(resume=...) fallan",
+    "Corre sin claves: LLM falso determinista; el SQL se ejecuta de verdad en SQLite de solo lectura",
+    "Límite honesto: el LLM falso no prueba la calidad de un modelo real"
+  ],
+  "puntos_en": [
+    "Pauses at interrupt() and resumes from the checkpoint, even from a new process with the same thread_id",
+    "Separate nodes for SQL generation and approval avoid regenerating a different query on resume",
+    "Control run without a checkpointer: get_state and Command(resume=...) fail",
+    "Runs without keys: deterministic fake LLM; SQL really executes on read-only SQLite",
+    "Honest limit: the fake LLM does not test real model quality"
+  ],
+  "stack": ["Python", "LangGraph", "SQLite", "langgraph-checkpoint-sqlite", "LangChain"],
+  "tags": ["langgraph", "human-in-the-loop", "checkpoint", "multi-agent", "interrupt"],
+  "cat": "Agentes y workflows",
+  "tipo": "Demo / repositorio de código",
+  "descripcion_repo_corta_en": "LangGraph human-in-the-loop demo: pause with interrupt(), resume from a SQLite checkpoint. Runs without API keys.",
+  "topics": ["langgraph", "human-in-the-loop", "langchain", "ai-agents", "checkpointing", "multi-agent", "sqlite", "python"]
+}
